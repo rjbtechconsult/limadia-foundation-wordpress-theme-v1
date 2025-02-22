@@ -255,10 +255,10 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
     // Start Element (Menu Item)
     function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
         // Check if the menu item has children
-        $has_children = in_array('menu-item-has-children', $item->classes);
+        $has_children = in_array('menu-item-has-children', (array) $item->classes);
 
         // Check if the current menu item is active
-        $active_class = in_array('current-menu-item', $item->classes) ? 'active' : '';
+        $active_class = in_array('current-menu-item', (array) $item->classes) ? 'active' : '';
 
         // Generate the list item classes
         $class_names = trim(implode(' ', array_filter([
