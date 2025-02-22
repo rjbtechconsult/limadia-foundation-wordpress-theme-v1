@@ -296,7 +296,7 @@ class Sidebar_Walker_Nav_Menu extends Walker_Nav_Menu {
         $has_children = in_array('menu-item-has-children', (array) $item->classes);
 
         // Check if the current menu item is active
-        $active_class = in_array('current-menu-item', $item->classes) ? 'active' : '';
+        $active_class = in_array('current-menu-item', (array) $item->classes) ? 'active' : '';
 
         if ($has_children) {
             // Parent menu item
