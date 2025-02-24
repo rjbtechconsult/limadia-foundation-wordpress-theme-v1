@@ -53,8 +53,8 @@
                                 <div class="upcoming-events box-hover-effect effect1 media maxwidth400 bg-light mb-20">
                                     <div class="row equal-height">
                                         <div class="col-sm-4 pr-0 pr-sm-15">
-                                            <div class="thumb p-15">
-                                            <img class="img-fullwidth" src="<?php echo $featured_image;?>" alt="<?php the_title(); ?>">
+                                            <div class=" p-15">
+                                                <img class="" src="<?php echo $featured_image;?>" alt="<?php the_title(); ?>">
                                             </div>
                                         </div>
                                         <div class="col-sm-4 border-right pl-0 pl-sm-15">
