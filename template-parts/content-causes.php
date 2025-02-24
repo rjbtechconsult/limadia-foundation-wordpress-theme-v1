@@ -54,7 +54,7 @@
                                     <div class="row equal-height">
                                         <div class="col-sm-4 pr-0 pr-sm-15">
                                             <div class="thumb p-15">
-                                            <img class="img-fullwidth" src="<?echo $featured_image;?>" alt="...">
+                                            <img class="img-fullwidth" src="<?php echo $featured_image;?>" alt="...">
                                             </div>
                                         </div>
                                         <div class="col-sm-4 border-right pl-0 pl-sm-15">
