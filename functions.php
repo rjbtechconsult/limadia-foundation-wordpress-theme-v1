@@ -316,7 +316,13 @@ class Sidebar_Walker_Nav_Menu extends Walker_Nav_Menu {
     }
 }
 
+// Excerpt Length
+include get_template_directory() . '/inc/excerpt-length.php';
+// Custom Pagination
+include get_template_directory() . '/inc/custom-pagination.php';
 // Gallery CPT
 include get_template_directory() . '/cpts/gallery-cpt.php';
+// Causes CPT
+include get_template_directory() . '/cpts/causes-cpt.php';
 
 
