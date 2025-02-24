@@ -46,15 +46,15 @@
                             $categories = get_the_terms(get_the_ID(), 'category');
                             $category = !empty($categories) ? esc_html($categories[0]->name) : 'Uncategorized';
                             $percentage = ($goal > 0) ? round(($raised / $goal) * 100) : 00;
-                            $featured_image = get_the_post_thumbnail_url(get_the_ID(), 'large') ?: 'https://yourwebsite.com/default-image.jpg';
+                            $featured_image = get_the_post_thumbnail_url(get_the_ID()) ?: '';
 
 
                             ?>
                                 <div class="upcoming-events box-hover-effect effect1 media maxwidth400 bg-light mb-20">
                                     <div class="row equal-height">
                                         <div class="col-sm-4 pr-0 pr-sm-15">
-                                            <div class=" p-15">
-                                                <img class="" src="<?php echo $featured_image;?>" alt="<?php the_title(); ?>">
+                                            <div class="thumb p-15">
+                                                <img class="img-fullwidth" src="<?php echo esc_url($featured_image);?>" alt="<?php the_title(); ?>">
                                             </div>
                                         </div>
                                         <div class="col-sm-4 border-right pl-0 pl-sm-15">
