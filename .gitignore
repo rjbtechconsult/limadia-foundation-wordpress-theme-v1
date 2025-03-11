@@ -1,0 +1,81 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE/editor config files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore compiled files
+*.log
+*.sql
+*.sqlite
+*.env
+
+# Ignore WordPress core files (if not version-controlled)
+wp-admin/
+wp-includes/
+wp-config.php
+
+# Ignore WordPress uploads (optional)
+wp-content/uploads/
+
+# Ignore vendor and dependencies
+node_modules/
+vendor/
+composer.lock
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Ignore theme and plugin cache
+wp-content/plugins/**/node_modules/
+wp-content/themes/**/node_modules/
+wp-content/mu-plugins/**/node_modules/
+wp-content/themes/**/vendor/
+
+# Ignore SASS/SCSS cache and compiled files (if using)
+*.sass-cache/
+*.scssc/
+*.map
+
+# Ignore build and deployment files
+dist/
+build/
+deploy/
+
+# Ignore backup and exported files
+backup/
+*.bak
+*.swp
+*.swo
+
+# Ignore temporary and cache files
+cache/
+tmp/
+*.tmp
+
+# Ignore WordPress debug logs
+wp-content/debug.log
+
+# Ignore Composer and PHPStorm files
+composer.phar
+/.phpstorm.meta.php/
+phpunit.xml
+phpunit.xml.dist
+
+# Ignore dotenv environment files
+.env
+.env.local
+.env.*.local
+
+# Ignore npm debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore any Mac-specific files
+.AppleDouble
+.LSOverride
