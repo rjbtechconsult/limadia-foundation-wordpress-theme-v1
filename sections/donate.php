@@ -1,4 +1,4 @@
- <section id="donate-now" class="divider"  data-bg-img="https://picsum.photos/1920/1280">
+ <section id="donate-now" class="divider"  data-bg-img="<?php echo get_template_directory_uri(); ?>/images/bg1.jpg">
       <div class="container pt-0 pb-0">
         <div class="row">
           <div class="col-md-7">

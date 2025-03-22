@@ -8,3 +8,20 @@ theme. But don't modify style-main.css file.
 */
 
 /* Your custom css codes start here: */
+.slide-item{
+    position: relative;
+}
+.slide-item::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Adjust transparency */
+    z-index: 1; /* Keeps it above the image */
+}
+.tp-caption.BigBold-SubTitle, .BigBold-SubTitle{
+    color:white !important;
+    font-size: 16px !important;
+}

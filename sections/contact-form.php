@@ -70,8 +70,8 @@
         </div>
         <div class="col-md-5">
         <h3 class="line-bottom mt-0">Get in touch with us</h3>
-        <p>Aliquam officia dolor rerum enim doloremque iusto eos atque tempora dignissimos similique, quae, maxime sit accusantium delectus.</p>
-        <ul class="styled-icons icon-dark icon-sm icon-circled mb-20">
+        <!-- <p>Aliquam officia dolor rerum enim doloremque iusto eos atque tempora dignissimos similique, quae, maxime sit accusantium delectus.</p> -->
+        <!-- <ul class="styled-icons icon-dark icon-sm icon-circled mb-20">
             <li><a href="#" data-bg-color="#3B5998"><i class="fa fa-facebook"></i></a></li>
             <li><a href="#" data-bg-color="#02B0E8"><i class="fa fa-twitter"></i></a></li>
             <li><a href="#" data-bg-color="#4C75A3"><i class="fa fa-vk"></i></a></li>
@@ -79,32 +79,33 @@
             <li><a href="#" data-bg-color="#D71619"><i class="fa fa-google-plus"></i></a></li>
             <li><a href="#" data-bg-color="#A4CA39"><i class="fa fa-android"></i></a></li>
             <li><a href="#" data-bg-color="#4C75A3"><i class="fa fa-vk"></i></a></li>
-        </ul>
+        </ul> -->
 
         <div class="icon-box media mb-15"> <a class="media-left pull-left flip mr-20" href="#"> <i class="pe-7s-map-2 text-theme-colored"></i></a>
             <div class="media-body">
-            <h5 class="mt-0">Our Office Location</h5>
-            <p>#405, Lan Streen, Los Vegas, USA</p>
+                <h5 class="mt-0">Our Office Location</h5>
+                <p class="m-0">Plot number 37, Achiase Nwansamire, Near Zion Primary Sch, Nkawie, Atwima- Nwabiagya, Kumasi, Ghana.</p>
+                <p>Box KS 11905, Adum-Ksi</p>
             </div>
         </div>
         <div class="icon-box media mb-15"> <a class="media-left pull-left flip mr-15" href="#"> <i class="pe-7s-call text-theme-colored"></i></a>
             <div class="media-body">
             <h5 class="mt-0">Contact Number</h5>
-            <p><a href="tel:+325-12345-65478">+325-12345-65478</a></p>
+            <p><a href="tel:+2330551213475">+233-05512-13475</a></p>
             </div>
         </div>
         <div class="icon-box media mb-15"> <a class="media-left pull-left flip mr-15" href="#"> <i class="pe-7s-mail text-theme-colored"></i></a>
             <div class="media-body">
             <h5 class="mt-0">Email Address</h5>
-            <p><a href="mailto:supporte@yourdomin.com">supporte@yourdomin.com</a></p>
+            <p><a href="mailto:info@limadiafoundation.com">info@limadiafoundation.com</a></p>
             </div>
         </div>
-        <div class="icon-box media mb-15"> <a class="media-left pull-left flip mr-20" href="#"> <i class="fa fa-skype text-theme-colored"></i></a>
+        <!-- <div class="icon-box media mb-15"> <a class="media-left pull-left flip mr-20" href="#"> <i class="fa fa-skype text-theme-colored"></i></a>
             <div class="media-body">
             <h5 class="mt-0">Make a Video Call</h5>
             <p>ThemeMascotSkype</p>
             </div>
-        </div>
+        </div> -->
         </div>
     </div>
     </div>

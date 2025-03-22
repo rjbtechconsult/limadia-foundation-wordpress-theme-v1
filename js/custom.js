@@ -1137,7 +1137,8 @@ jQuery(function($) {
                 if (!current_item.hasClass('appeared')) {
                     var percent = current_item.data('percent');
                     var barcolor = current_item.data('barcolor');
-                    current_item.append('<span class="percent">' + percent + '%' + '</span>').css('background-color', barcolor).css('width', percent + '%').addClass('appeared');
+                    var displayPercent = Math.min(percent, 100);
+                    current_item.append('<span class="percent">' + percent + '%' + '</span>').css('background-color', barcolor).css('width', displayPercent + '%').addClass('appeared');
                 }
                 
             });

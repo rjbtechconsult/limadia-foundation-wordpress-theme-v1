@@ -1,22 +1,5 @@
 <?php get_header();?>
- <!-- Section: inner-header -->
-<section class="inner-header divider layer-overlay overlay-dark" data-bg-img="http://placehold.it/1920x1280">
-    <div class="container pt-30 pb-30">
-        <!-- Section Content -->
-        <div class="section-content text-center">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3 text-center">
-            <h2 class="text-theme-colored font-36">Causes</h2>
-            <ol class="breadcrumb text-center mt-10 white">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Pages</a></li>
-                <li class="active">Causes</li>
-            </ol>
-            </div>
-        </div>
-        </div>
-    </div>      
-</section>
+
 
 <?php if (have_posts()) : while (have_posts()) : the_post(); 
     $goal = get_post_meta(get_the_ID(), '_cause_goal', true);
@@ -28,6 +11,25 @@
 
 ?>
 
+ <!-- Section: inner-header 1920/1280 -->
+<section class="inner-header divider layer-overlay overlay-dark" data-bg-img="<?php echo esc_url($featured_image); ?>">
+    <div class="container pt-30 pb-30">
+        <!-- Section Content -->
+        <div class="section-content text-center">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center">
+            <h2 class="text-theme-colored font-36"><?php the_title(); ?></h2>
+            <ol class="breadcrumb text-center mt-10 white">
+                <li><a href="/">Home</a></li>
+                <li><a href="/causes">Causes</a></li>
+                <li class="active"><?php the_title(); ?></li>
+            </ol>
+            </div>
+        </div>
+        </div>
+    </div>      
+</section>
+
 <!-- Divider: Partners & Donors -->
 <section>
     <div class="container">
@@ -36,22 +38,15 @@
             <div class="upcoming-events media bg-light p-15 pb-60 mb-50 mb-sm-30">
                 <?php if ($featured_image): ?>
                     <div class="thumb">
-                        <img class="img-fullwidth" src="<?php echo esc_url($featured_image); ?>" alt="...">
+                        <img class="img-fullwidth" src="<?php echo esc_url($featured_image); ?>" alt="<?php the_title(); ?>">
                     </div>
                 <?php endif; ?>
-                <div class="row">
-
-                    <div class="col-sm-8">
-                        <div class="mt-30">
-                            <h4 class="media-heading text-uppercase font-weight-500"><?php the_title(); ?></h4>
-                            <?php if (has_excerpt()): ?>
-                                <p class="mb-20"><?php echo get_the_excerpt(); ?></p>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <div class="event-count causes clearfix p-15 mt-15 border-left">
+                <div class="event-details mt-30">
+                    <h4 class="media-heading text-uppercase font-weight-500"><?php the_title(); ?></h4>
+                    <?php the_content(); ?>
+                </div>
+                <div class="">
+                        <div class="event-count causes clearfix p-15">
                             <div class="progress-item mt-20 mb-30">
                                 <div class="progress mb-30">
                                     <div class="progress-bar" data-percent="<?php echo $percentage; ?>"></div>
@@ -65,17 +60,13 @@
                                 <ul class="pull-left list-inline mt-20">
                                     <li class="text-theme-colored pr-0">Goal: $<?php echo get_post_meta(get_the_ID(), '_cause_goal', true); ?></li>
                                 </ul>
-                                <a href="#" class="btn btn-dark btn-flat btn-sm pull-right mt-15">Donate</a>
+                                <a href="<?php echo get_template_directory_uri(); ?>/ajax-load/donation-form.html" class="btn btn-dark btn-flat btn-sm pull-right mt-15 ajaxload-popup">Donate</a>
                             </div>
                         </div>
                     </div>
-
-                </div>
-                <div class="event-details">
-                    <?php the_content(); ?>
-                </div>
             </div>
 
+            <!-- Get other causes in the same category -->
             <?php
                 // Get current cause ID
                 $current_cause_id = get_the_ID();
@@ -102,7 +93,7 @@
                     
                     if ($related_causes->have_posts()) :?>
 
-                        <h3 class="mt-0 text-gray">Featured Causes</h3>
+                        <h3 class="mt-0 text-gray">Related Causes</h3>
                         <div class="gallery-list-carosel owl-nav-top">
                             <?php while ($related_causes->have_posts()) : $related_causes->the_post(); ?>
                                 <?php if (has_post_thumbnail()) : ?>
@@ -124,7 +115,7 @@
         
         <div class="col-sm-12 col-md-3">
             <div class="sidebar sidebar-right mt-sm-30">
-            <div class="widget">
+            <!-- <div class="widget">
                 <h5 class="widget-title line-bottom">Search box</h5>
                 <div class="search-form">
                 <form>
@@ -136,8 +127,8 @@
                     </div>
                 </form>
                 </div>
-            </div>
-            <div class="widget">
+            </div> -->
+            <!-- <div class="widget">
                 <h5 class="widget-title line-bottom">Categories</h5>
                 <div class="categories">
                 <ul class="list list-border angle-double-right">
@@ -148,7 +139,7 @@
                     <li><a href="#">Personal<span>(16)</span></a></li>
                 </ul>
                 </div>
-            </div>
+            </div> -->
             <div class="widget">
                 <h5 class="widget-title line-bottom">Latest News</h5>
                 <div class="latest-posts">
@@ -175,14 +166,13 @@
                 </article>
                 </div>
             </div>
-            <div class="widget">
+            <!-- <div class="widget">
                 <h5 class="widget-title line-bottom">Photos from Flickr</h5>
                 <div id="flickr-feed" class="clearfix">
-                <!-- Flickr Link -->
                 <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=9&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=52617155@N08">
                 </script>
                 </div>
-            </div>
+            </div> -->
             </div>
         </div>
         </div>

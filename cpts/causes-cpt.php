@@ -9,14 +9,14 @@ function register_cause_post_type() {
         'has_archive'   => true,
         'menu_icon'     => 'dashicons-heart', 
         'supports'      => array('title', 'editor', 'thumbnail', 'excerpt'),
-        'taxonomies'    => array('category') // Enable categories for Causes
+        'taxonomies'    => array('category'), // Enable categories for Causes
+
     );
     register_post_type('cause', $args);
 }
 add_action('init', 'register_cause_post_type');
 
 // Add featured cause meta box
-
 function add_featured_cause_meta_box() {
     add_meta_box(
         'featured_cause_meta_box',

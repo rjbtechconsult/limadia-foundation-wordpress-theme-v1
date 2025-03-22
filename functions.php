@@ -152,7 +152,7 @@ function limadia_entity_foundation_v1_scripts() {
     wp_enqueue_style('preloader', $theme_uri . '/css/preloader.css');
     wp_enqueue_style('custom-bootstrap-margin-padding', $theme_uri . '/css/custom-bootstrap-margin-padding.css');
     wp_enqueue_style('responsive', $theme_uri . '/css/responsive.css');
-    // wp_enqueue_style('custom-style', $theme_uri . '/css/style.css'); // Uncomment if you need it
+    wp_enqueue_style('custom-style', $theme_uri . '/css/style.css'); // Uncomment if you need it
 
     // Revolution Slider CSS
     wp_enqueue_style('rev-slider-settings', $theme_uri . '/js/revolution-slider/css/settings.css');
@@ -324,5 +324,10 @@ include get_template_directory() . '/inc/custom-pagination.php';
 include get_template_directory() . '/cpts/gallery-cpt.php';
 // Causes CPT
 include get_template_directory() . '/cpts/causes-cpt.php';
+// Slices CPT
+include get_template_directory() . '/cpts/slides-cpt.php';
+// Customize featured image text
+include get_template_directory() . '/inc/custom-featured-image-text.php';
+
 
 

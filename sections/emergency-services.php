@@ -4,7 +4,7 @@
         <div class="row">
         <div class="col-md-12">
             <h3 class="mt-0">How you can help us</h3>
-            <h2>Just call at <span class="text-theme-colored">(01) 234 5678</span> to make a donation</h2>
+            <h2>Just call at <span class="text-theme-colored">+233 05512 13475</span> to make a donation</h2>
         </div>
         </div>
     </div>
