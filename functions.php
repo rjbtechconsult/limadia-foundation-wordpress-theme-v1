@@ -160,7 +160,7 @@ function limadia_entity_foundation_v1_scripts() {
     wp_enqueue_style('rev-slider-navigation', $theme_uri . '/js/revolution-slider/css/navigation.css');
 
     // Theme Skin
-    wp_enqueue_style('theme-skin', $theme_uri . '/css/colors/theme-skin-yellow.css');
+    wp_enqueue_style('theme-skin', $theme_uri . '/css/colors/theme-skin-orange.css');
 
 	// Enqueue JavaScript Files
 	wp_enqueue_script( 'limadia-entity-foundation-v1-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, false );

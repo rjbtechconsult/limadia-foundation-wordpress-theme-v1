@@ -132,7 +132,7 @@ function display_job_application_columns($column, $post_id) {
             
             echo '<a href="' . get_edit_post_link($post_id) . '">' . esc_html($job_title) . '</a>';
             if ($status !== '1') {
-                echo ' <span class="badge-new" style="background: #d63638; color: #fff; padding: 2px 6px; border-radius: 4px; font-size: 10px; margin-left: 5px; text-transform: uppercase;">' . __('New', 'limadia-entity-foundation-v1') . '</span>';
+                echo ' <span class="badge-new" style="background: #FA7920; color: #fff; padding: 2px 6px; border-radius: 4px; font-size: 10px; margin-left: 5px; text-transform: uppercase;">' . __('New', 'limadia-entity-foundation-v1') . '</span>';
             }
             break;
         case 'applicant_email':
