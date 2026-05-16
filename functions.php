@@ -301,12 +301,14 @@ class Sidebar_Walker_Nav_Menu extends Walker_Nav_Menu {
         if ($has_children) {
             // Parent menu item
             $output .= '<li class="' . esc_attr($active_class) . '">';
-            $output .= '<a class="tree-toggler nav-header">' . esc_html($item->title);
+            $link_class = ($active_class == 'active') ? 'tree-toggler nav-header text-theme-colored' : 'tree-toggler nav-header';
+            $output .= '<a class="' . esc_attr($link_class) . '">' . esc_html($item->title);
             $output .= ' <i class="fa fa-angle-down"></i></a>';
         } else {
             // Regular menu item
             $output .= '<li class="' . esc_attr($active_class) . '">';
-            $output .= '<a href="' . esc_url($item->url) . '">' . esc_html($item->title) . '</a>';
+            $link_class = ($active_class == 'active') ? 'text-theme-colored' : '';
+            $output .= '<a href="' . esc_url($item->url) . '" class="' . esc_attr($link_class) . '">' . esc_html($item->title) . '</a>';
         }
     }
 
@@ -334,6 +336,14 @@ include get_template_directory() . '/cpts/jobs-cpt.php';
 include get_template_directory() . '/inc/job-form-handler.php';
 // Job Applications CPT
 include get_template_directory() . '/cpts/applications-cpt.php';
+// Inquiries CPT
+include get_template_directory() . '/cpts/inquiries-cpt.php';
+// Contact Form Handler
+include get_template_directory() . '/inc/contact-form-handler.php';
+// Donations CPT
+include get_template_directory() . '/cpts/donations-cpt.php';
+// Donation Form Handler
+include get_template_directory() . '/inc/donation-form-handler.php';
 
 /**
  * Configure SMTP for Private Email
@@ -364,7 +374,15 @@ add_action('phpmailer_init', 'limadia_configure_smtp');
 function add_careers_link_to_menu($items, $args) {
     if ($args->theme_location == 'primary_menu') {
         $active_class = (is_page_template('careers.php') || is_singular('job')) ? 'active current-menu-item current_page_item' : '';
-        $items .= '<li class="menu-item ' . esc_attr($active_class) . '"><a href="' . esc_url(home_url('/careers')) . '">Careers</a></li>';
+        
+        // Use different classes for desktop vs mobile side panel
+        $is_desktop_menu = (strpos($args->menu_class, 'menuzord-menu') !== false);
+        $link_class = '';
+        if ($active_class !== '') {
+            $link_class = $is_desktop_menu ? 'text-white' : 'text-theme-colored';
+        }
+
+        $items .= '<li class="menu-item ' . esc_attr($active_class) . '"><a href="' . esc_url(home_url('/careers')) . '" class="' . esc_attr($link_class) . '">Careers</a></li>';
     }
     return $items;
 }

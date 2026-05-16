@@ -5,11 +5,8 @@
             <div class="col-md-12 text-center">
                 <!-- <h4 class="m-0">Welcome to</h4> -->
                 <h2 class="title text-theme-colored mt-0">What We Do</h2>
-                <p class="mb-10">
-                    At Limadia Foundation, we believe that everyone deserves access to quality healthcare and education, regardless of their financial situation. 
-                    Founded with a mission to support the elderly, orphans, and individuals with disabilities, our work focuses on providing free medical care, educational support, and emergency relief during crises. 
-                    With your help, we can continue to uplift communities and create lasting change. Join us in making a difference today.
-                </p>
+                    Our mission is the holistic development of children in Ghana and the provision of healthcare to elderly people with dementia. 
+                    Limadia Entity Foundation aims to strengthen Ghanaian communities by investing in people and creating meaningful, lasting contributions to society.
 
                 <!-- <h4 class="mt-20 mb-5">Our Services</h4>
                 <ul class="list theme-colored angle-double-right mb-sm-30">

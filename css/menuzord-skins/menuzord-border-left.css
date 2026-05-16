@@ -59,8 +59,8 @@ Border-left Skin
 .menuzord.red .menuzord-menu > li.active > a,
 .menuzord.red .menuzord-menu > li:hover > a,
 .menuzord.red .menuzord-menu ul.dropdown li:hover > a{
-	border-left-color: #FC6E51;
-	color: #FC6E51;  
+	border-left-color: #FA7920;
+	color: #FA7920;  
 }
 /* orange */
 .menuzord.orange .menuzord-menu > li.active > a,

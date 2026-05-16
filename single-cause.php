@@ -12,7 +12,7 @@
 ?>
 
  <!-- Section: inner-header 1920/1280 -->
-<section class="inner-header divider layer-overlay overlay-dark" data-bg-img="<?php echo esc_url($featured_image); ?>">
+<section class="inner-header divider layer-overlay overlay-dark" data-bg-img="http://placehold.it/1920/1280">
     <div class="container pt-30 pb-30">
         <!-- Section Content -->
         <div class="section-content text-center">

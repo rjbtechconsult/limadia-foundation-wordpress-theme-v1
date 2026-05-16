@@ -48,10 +48,9 @@
                     <div class="form-group mb-20">
                       <label><strong>I Want to Donate for</strong></label>
                       <select name="item_name" class="form-control">
-                        <option value="Educate Children">Educate Children</option>
-                        <option value="Child Camps">Child Camps</option>
-                        <option value="Clean Water for Life">Clean Water for Life</option>
-                        <option value="Campaign for Child Poverty">Campaign for Child Poverty</option>
+                        <option value="Children Holistic Development">Children Holistic Development</option>
+                        <option value="Elderly Healthcare (Dementia)">Elderly Healthcare (Dementia)</option>
+                        <option value="Community Strengthening">Community Strengthening</option>
                       </select>
                     </div>
                   </div>
@@ -89,6 +88,20 @@
 
                   <div class="col-sm-12">
                     <div class="form-group mb-20">
+                      <label><strong>Full Name</strong></label>
+                      <input type="text" name="donor_name" class="form-control" required placeholder="Enter your full name">
+                    </div>
+                  </div>
+
+                  <div class="col-sm-12">
+                    <div class="form-group mb-20">
+                      <label><strong>Email Address</strong></label>
+                      <input type="email" name="donor_email" class="form-control" required placeholder="Enter your email">
+                    </div>
+                  </div>
+
+                  <div class="col-sm-12">
+                    <div class="form-group mb-20">
                       <label><strong>How much do you want to donate?</strong></label>
                       <select name="amount" class="form-control">
                           <option value="20">20</option>
@@ -110,6 +123,8 @@
                     </div>
                   </div>
                 </div>
+                <div id="donation-status-message"></div>
+                <?php wp_nonce_field('submit_donation_form', 'donation_form_nonce'); ?>
               </form>
               
               <!-- Script for Donation Form Custom Amount -->
@@ -145,36 +160,36 @@
 
                   // submit form on click
                   $donation_form.on('submit', function(e){
-                          $( "#paypal_donate_form-onetime" ).submit();
-                      var item_name = $donation_form.find("select[name='item_name'] option:selected").val();
-                      var currency_code = $donation_form.find("select[name='currency_code'] option:selected").val();
-                      var amount = $donation_form.find("select[name='amount'] option:selected").val();
-                      var t3 = $donation_form.find("input[name='t3']:checked").val();
+                      e.preventDefault();
+                      
+                      var $btn = $donation_form.find('button[type="submit"]');
+                      var originalText = $btn.text();
+                      $btn.text('Processing...').prop('disabled', true);
 
-                      if ( amount == 'other') {
-                        amount = $donation_form.find("#input_other_amount").val();
-                      }
+                      var formData = $donation_form.serialize();
+                      formData += '&action=submit_donation_form';
 
-                      // submit proper form now
-                      if ( $("input[name='payment_type']:checked", $donation_form).val() == 'recurring' ) {
-                          var recurring_form = $('#paypal_donate_form-recurring');
+                      $.ajax({
+                          type: 'POST',
+                          url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                          data: formData,
+                          dataType: 'json',
+                          success: function(response) {
+                              if (response.success) {
+                                  $('#donation-status-message').html('<div class="alert alert-success">' + response.data.message + '</div>');
+                                  $donation_form[0].reset();
+                                  $btn.text(originalText).prop('disabled', false);
+                              } else {
+                                  $('#donation-status-message').html('<div class="alert alert-danger">' + response.data.message + '</div>');
+                                  $btn.text(originalText).prop('disabled', false);
+                              }
+                          },
+                          error: function() {
+                              $('#donation-status-message').html('<div class="alert alert-danger">An error occurred. Please try again.</div>');
+                              $btn.text(originalText).prop('disabled', false);
+                          }
+                      });
 
-                          recurring_form.find("input[name='item_name']").val(item_name);
-                          recurring_form.find("input[name='currency_code']").val(currency_code);
-                          recurring_form.find("input[name='a3']").val(amount);
-                          recurring_form.find("input[name='t3']").val(t3);
-
-                          recurring_form.find("input[type='submit']").trigger('click');
-
-                      } else if ( $("input[name='payment_type']:checked", $donation_form).val() == 'one_time' ) {
-                          var onetime_form = $('#paypal_donate_form-onetime');
-
-                          onetime_form.find("input[name='item_name']").val(item_name);
-                          onetime_form.find("input[name='currency_code']").val(currency_code);
-                          onetime_form.find("input[name='amount']").val(amount);
-
-                          onetime_form.find("input[type='submit']").trigger('click');
-                      }
                       return false;
                   });
 

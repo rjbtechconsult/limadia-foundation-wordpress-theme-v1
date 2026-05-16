@@ -29,13 +29,29 @@
 			</div>
 		</div>
 		<div class="header-nav">
+			<style>
+				/* Fallback to ensure left hamburger is hidden */
+				.menuzord .showhide, #menuzord-right .showhide { display: none !important; }
+				
+				/* Align logo left on mobile */
+				@media (max-width: 991px) {
+					.menuzord-brand {
+						float: left !important;
+						margin: 18px 0 10px 0 !important; 
+						padding: 0 !important;
+					}
+					.side-panel-trigger {
+						margin-top: 18px !important;
+					}
+				}
+			</style>
 			<div class="header-nav-wrapper navbar-scrolltofixed bg-lightest">
 				<div class="container">
 					<nav id="menuzord-right" class="menuzord orange bg-lightest">
 						<a class="menuzord-brand" href="/">
 							<img src="<?php echo get_template_directory_uri(); ?>/images/logo-wide@4x.png" alt="">
 						</a>
-						<div id="side-panel-trigger" class="side-panel-trigger">
+						<div id="side-panel-trigger" class="side-panel-trigger hidden-sm hidden-md hidden-lg">
 							<a href="#">
 								<i class="fa fa-bars font-24 text-gray"></i>
 							</a>

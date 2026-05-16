@@ -7,7 +7,7 @@
 ?>
 
 <!-- Section: inner-header -->
-<section class="inner-header divider layer-overlay overlay-dark" data-bg-img="<?php echo get_template_directory_uri(); ?>/images/bg1.jpg">
+<section class="inner-header divider layer-overlay overlay-dark" data-bg-img="http://placehold.it/1920/1280">
   <div class="container pt-30 pb-30">
     <!-- Section Content -->
     <div class="section-content text-center">
@@ -24,95 +24,13 @@
   </div>      
 </section>
 
-<!-- Section: Job List -->
-<section>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="heading-line-bottom mt-0 mb-30">
-          <h4 class="heading-title">Open Positions</h4>
-        </div>
-        
-        <?php
-        $args = array(
-            'post_type'      => 'job',
-            'posts_per_page' => -1,
-            'status'         => 'publish',
-            'meta_query'     => array(
-                'relation' => 'OR',
-                array(
-                    'key'     => '_job_status',
-                    'value'   => 'Open',
-                    'compare' => '='
-                ),
-                array(
-                    'key'     => '_job_status',
-                    'compare' => 'NOT EXISTS'
-                )
-            )
-        );
-        $job_query = new WP_Query( $args );
-
-        if ( $job_query->have_posts() ) :
-            $count = 0;
-            while ( $job_query->have_posts() ) : $job_query->the_post();
-                $location = get_post_meta( get_the_ID(), '_job_location', true );
-                $type     = get_post_meta( get_the_ID(), '_job_type', true );
-                $closing  = get_post_meta( get_the_ID(), '_job_closing_date', true );
-                $count++;
-                $margin_top = ($count > 1) ? 'mt-80' : '';
-                ?>
-                <!-- Job <?php the_ID(); ?> -->
-                <div class="icon-box <?php echo esc_attr($margin_top); ?> mb-0 p-0">
-                  <a href="<?php the_permalink(); ?>" class="icon icon-gray pull-left mb-0 mr-10">
-                    <?php if ( has_post_thumbnail() ) : ?>
-                      <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'thumbnail'); ?>" alt="<?php the_title(); ?>" style="width: 50px; height: 50px; object-fit: cover;">
-                    <?php else : ?>
-                      <i class="pe-7s-users"></i>
-                    <?php endif; ?>
-                  </a>
-                  <h3 class="icon-box-title pt-15 mt-0 mb-40"><?php the_title(); ?></h3>
-                  <hr>
-                  <div class="text-gray"><?php the_excerpt(); ?></div>
-                  <div class="mt-15">
-                    <?php if ( $location ) : ?>
-                      <span class="text-theme-colored font-weight-600 mr-20"><i class="fa fa-map-marker"></i> <?php echo esc_html($location); ?></span>
-                    <?php endif; ?>
-                    <?php if ( $type ) : ?>
-                      <span class="text-theme-colored font-weight-600 mr-20"><i class="fa fa-clock-o"></i> <?php echo esc_html($type); ?></span>
-                    <?php endif; ?>
-                    <?php if ( $closing ) : ?>
-                      <span class="text-theme-colored font-weight-600 mr-20"><i class="fa fa-calendar-times-o"></i> Closes: <?php echo esc_html(date("M j, Y", strtotime($closing))); ?></span>
-                    <?php endif; ?>
-                  </div>
-
-                  <a class="btn btn-dark btn-sm mt-20" href="<?php the_permalink(); ?>">Apply Now</a>
-                </div>
-                <?php
-            endwhile;
-            wp_reset_postdata();
-        else :
-            ?>
-            <div class="alert alert-info">
-              <?php _e('Currently, there are no open positions. Please check back later.', 'limadia-entity-foundation-v1'); ?>
-            </div>
-            <?php
-        endif;
-        ?>
-
-
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Section: Benefits/Culture -->
-<section class="bg-lightest">
-  <div class="container pb-80">
+<section class="bg-white">
+  <div class="container pt-80 pb-30">
     <div class="section-title text-center">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <h2 class="mt-0 line-height-1">Why Join <span class="text-theme-colored">Limadia Foundation?</span></h2>
+          <h2 class="mt-0 line-height-1">Why Join <span class="text-theme-colored">Limadia Entity Foundation?</span></h2>
           <p>Join a team of passionate individuals dedicated to making a real difference in the world.</p>
         </div>
       </div>
@@ -146,6 +64,88 @@
             <p>We invest in our people through training and development programs to help you grow personally and professionally.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section: Job List -->
+<section style="background-color: #f7f8fa;">
+  <div class="container pt-30 pb-80">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-title text-center mb-40">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <h2 class="mt-0 line-height-1">Open <span class="text-theme-colored">Positions</span></h2>
+            </div>
+          </div>
+        </div>
+        
+        <?php
+        $args = array(
+            'post_type'      => 'job',
+            'posts_per_page' => -1,
+            'status'         => 'publish',
+            'meta_query'     => array(
+                'relation' => 'OR',
+                array(
+                    'key'     => '_job_status',
+                    'value'   => 'Open',
+                    'compare' => '='
+                ),
+                array(
+                    'key'     => '_job_status',
+                    'compare' => 'NOT EXISTS'
+                )
+            )
+        );
+        $job_query = new WP_Query( $args );
+
+        if ( $job_query->have_posts() ) :
+            while ( $job_query->have_posts() ) : $job_query->the_post();
+                $location = get_post_meta( get_the_ID(), '_job_location', true );
+                $type     = get_post_meta( get_the_ID(), '_job_type', true );
+                $closing  = get_post_meta( get_the_ID(), '_job_closing_date', true );
+                ?>
+                <!-- Job Card - Full Width -->
+                <div class="job-item mb-20">
+                  <div class="row">
+                    <div class="col-sm-8 col-md-9">
+                      <div class="job-details">
+                        <h3 class="job-title mt-0 mb-10"><a href="<?php the_permalink(); ?>" class="text-black"><?php the_title(); ?></a></h3>
+                        <ul class="list-inline font-14 mb-10">
+                          <?php if ( $location ) : ?>
+                            <li class="mr-20"><i class="fa fa-map-marker text-theme-colored"></i> <?php echo esc_html($location); ?></li>
+                          <?php endif; ?>
+                          <?php if ( $type ) : ?>
+                            <li class="mr-20"><i class="fa fa-clock-o text-theme-colored"></i> <?php echo esc_html($type); ?></li>
+                          <?php endif; ?>
+                          <?php if ( $closing ) : ?>
+                            <li class="mr-20"><i class="fa fa-calendar-times-o text-theme-colored"></i> Closes: <?php echo esc_html(date("M j, Y", strtotime($closing))); ?></li>
+                          <?php endif; ?>
+                        </ul>
+                        <div class="job-excerpt text-gray">
+                          <?php echo wp_trim_words(get_the_excerpt(), 25, '...'); ?>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4 col-md-3 text-right sm-text-left mt-sm-20">
+                      <a class="btn btn-theme-colored btn-flat btn-sm mt-10" href="<?php the_permalink(); ?>">View Details & Apply</a>
+                    </div>
+                  </div>
+                </div>
+                <?php
+            endwhile;
+            wp_reset_postdata();
+        else :
+            ?>
+            <div class="alert alert-info">
+              <?php _e('Currently, there are no open positions. Please check back later.', 'limadia-entity-foundation-v1'); ?>
+            </div>
+            <?php
+        endif;
+        ?>
       </div>
     </div>
   </div>

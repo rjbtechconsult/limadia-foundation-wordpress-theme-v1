@@ -73,7 +73,7 @@ Colored Skin
 .menuzord.red .menuzord-menu > li.active > a, 
 .menuzord.red .menuzord-menu > li:hover > a, 
 .menuzord.red .menuzord-menu ul.dropdown li:hover > a{ 
-	background: #FC6E51; 
+	background: #FA7920; 
 	color: #fff;
 }
 .menuzord.red .showhide em{
@@ -83,11 +83,11 @@ Colored Skin
 	color: #fff;
 }
 .menuzord.red .menuzord-menu > li.search form input[type="text"]{
-	background: #FC6E51;
+	background: #FA7920;
 	color: #fff;
 }
 /* orange */
-.menuzord.orange { background: #ff670f; }
+.menuzord.orange { background: #FA7920; }
 .menuzord.orange .menuzord-brand{ color: #fff; }
 .menuzord.orange .menuzord-menu > li > a{ color: #fff; }
 .menuzord.orange .menuzord-menu > li.active > a, 
@@ -188,7 +188,7 @@ Colored Skin
 	/* red */
 	.menuzord.red.menuzord-responsive .menuzord-menu > li > a,
 	.menuzord.red.menuzord-responsive .menuzord-menu > li > a .indicator{
-		border-color: #FC6E51;
+		border-color: #FA7920;
 	}
 	/* orange */
 	.menuzord.orange.menuzord-responsive .menuzord-menu > li > a,

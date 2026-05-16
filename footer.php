@@ -17,7 +17,7 @@
 			<div class="col-sm-6 col-md-3">
 				<div class="widget dark"> 
 					<img alt="logo" src="<?php echo get_template_directory_uri(); ?>/images/logo-wide-white@4x.png" />
-					<p class="font-12 mt-20 mb-10">Limadia Foundation is a nonprofit dedicated to providing free healthcare, education, and disaster relief to vulnerable communities, ensuring dignity and opportunity for all.</p>
+					<p class="font-12 mt-20 mb-10">Limadia Entity Foundation is dedicated to the holistic development of children in Ghana and the provision of healthcare to elderly people with dementia, aiming to strengthen Ghanaian communities by investing in people.</p>
 					<a class="text-gray font-12" href="/about"><i class="fa fa-angle-double-right text-theme-colored"></i>Read more</a>
 					<!-- <ul class="styled-icons icon-dark mt-20">
 						<li><a href="#" data-bg-color="#3B5998"><i class="fa fa-facebook"></i></a></li>
@@ -85,7 +85,7 @@
 	<div class="container-fluid bg-theme-colored p-20">
 		<div class="row text-center">
 			<div class="col-md-12">
-				<p class="text-white font-11 m-0">Copyright &copy;<?php echo date("Y");?> Limadia Entity Foundation. All Rights Reserved</p>
+				<p class="text-white font-11 m-0">&copy;<?php echo date("Y");?> Limadia Entity Foundation. All Rights Reserved</p>
 			</div>
 		</div>
 	</div>

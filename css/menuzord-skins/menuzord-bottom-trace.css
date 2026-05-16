@@ -57,11 +57,11 @@ Bottom trace Skin
 .menuzord.orange .menuzord-menu > li.active > a, 
 .menuzord.orange .menuzord-menu > li:hover > a, 
 .menuzord.orange .menuzord-menu ul.dropdown li:hover > a{ 
-	color: #ff670f; 
+	color: #FA7920; 
 }
 .menuzord.orange .menuzord-menu > li.active > a:before, 
 .menuzord.orange .menuzord-menu > li:hover > a:before{ 
-	background: #ff670f; 
+	background: #FA7920; 
 }
 /* yellow */
 .menuzord.yellow .menuzord-menu > li.active > a, 

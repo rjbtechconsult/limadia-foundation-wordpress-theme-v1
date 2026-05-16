@@ -1,6 +1,6 @@
-<div id="side-panel" class="dark" data-bg-img="<?php echo get_template_directory_uri(); ?>/images/sidebar-bg.jpg">
+<div id="side-panel" class="bg-white" data-bg-color="#ffffff">
   <div class="side-panel-wrap">
-    <div id="side-panel-trigger-close" class="side-panel-trigger"><a href="#"><i class="icon_close font-30"></i></a></div>
+    <div id="side-panel-trigger-close" class="side-panel-trigger"><a href="#"><i class="icon_close font-30 text-theme-colored"></i></a></div>
     <a href="javascript:void(0)">
 		<img alt="logo" src="<?php echo get_template_directory_uri(); ?>/images/logo-wide@4x.png" />
 	</a>
@@ -22,9 +22,9 @@
     <div class="side-panel-widget mt-30">
       <div class="widget no-border">
         <ul>
-          <li class="font-14 mb-5"> <i class="fa fa-phone text-theme-colored"></i> <a href="#" class="text-gray">123-456-789</a> </li>
-          <li class="font-14 mb-5"> <i class="fa fa-clock-o text-theme-colored"></i> Mon-Fri 8:00 to 2:00 </li>
-          <li class="font-14 mb-5"> <i class="fa fa-envelope-o text-theme-colored"></i> <a href="#" class="text-gray">contact@yourdomain.com</a> </li>
+          <li class="font-14 mb-5"> <i class="fa fa-phone text-theme-colored"></i> <a href="#" class="text-gray">+233-05512-13475</a> </li>
+          <li class="font-14 mb-5"> <i class="fa fa-clock-o text-theme-colored"></i> Mon-Fri 24 Hours </li>
+          <li class="font-14 mb-5"> <i class="fa fa-envelope-o text-theme-colored"></i> <a href="mailto:info@limadiafoundation.com" class="text-gray">info@limadiafoundation.com</a> </li>
         </ul>      
       </div>
       <div class="widget">
@@ -34,7 +34,7 @@
           <li><a href="#"><i class="fa fa-twitter"></i></a></li>
         </ul>
       </div>
-      <p>Copyright &copy;2016 ThemeMascot</p>
+      <p class="text-gray-darkgray">&copy;<?php echo date("Y");?> Limadia Entity Foundation</p>
     </div>
   </div>
 </div>

@@ -1,10 +1,12 @@
- <section class="divider layer-overlay overlay-white-9" data-bg-img="http://picsum.photos/1920/1280">
+ <section class="bg-white">
     <div class="container">
     <div class="row pt-30">
         <div class="col-md-7">
         <h3 class="line-bottom mt-0 mb-30">Interested in discussing?</h3>
         <!-- Contact Form -->
-        <form id="contact_form" name="contact_form" class="form-transparent" action="includes/sendmail.php" method="post">
+        <form id="contact_form" name="contact_form" class="" action="<?php echo admin_url('admin-ajax.php'); ?>" method="post">
+            <input type="hidden" name="action" value="submit_contact_form">
+            <?php wp_nonce_field('submit_contact_form', 'contact_form_nonce'); ?>
             <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
@@ -50,7 +52,7 @@
                 var form_btn = $(form).find('button[type="submit"]');
                 var form_result_div = '#form-result';
                 $(form_result_div).remove();
-                form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
+                form_btn.before('<div id="form-result" class="alert" role="alert" style="display: none;"></div>');
                 var form_btn_old_msg = form_btn.html();
                 form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
                 $(form).ajaxSubmit({
@@ -58,10 +60,17 @@
                 success: function(data) {
                     if( data.status == 'true' ) {
                     $(form).find('.form-control').val('');
+                    $(form_result_div).removeClass('alert-danger').addClass('alert-success');
+                    } else {
+                    $(form_result_div).removeClass('alert-success').addClass('alert-danger');
                     }
                     form_btn.prop('disabled', false).html(form_btn_old_msg);
                     $(form_result_div).html(data.message).fadeIn('slow');
                     setTimeout(function(){ $(form_result_div).fadeOut('slow') }, 6000);
+                },
+                error: function() {
+                    form_btn.prop('disabled', false).html(form_btn_old_msg);
+                    $(form_result_div).removeClass('alert-success').addClass('alert-danger').html('An unexpected error occurred. Please try again.').fadeIn('slow');
                 }
                 });
             }

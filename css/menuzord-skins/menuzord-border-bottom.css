@@ -59,11 +59,11 @@ Border-bottom Skin
 .menuzord.orange .menuzord-menu > li.active > a, 
 .menuzord.orange .menuzord-menu > li:hover > a, 
 .menuzord.orange .menuzord-menu ul.dropdown li:hover > a{ 
-	color: #ff670f; 
+	color: #FA7920; 
 }
 .menuzord.orange .menuzord-menu > li.active > a, 
 .menuzord.orange .menuzord-menu > li:hover > a{ 
-	border-bottom-color: #ff670f; 
+	border-bottom-color: #FA7920; 
 }
 /* yellow */
 .menuzord.yellow .menuzord-menu > li.active > a, 

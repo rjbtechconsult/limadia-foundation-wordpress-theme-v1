@@ -16,7 +16,7 @@ if (!$status) $status = 'Open';
 ?>
 
 <!-- Section: inner-header -->
-<section class="inner-header divider layer-overlay overlay-dark" data-bg-img="<?php echo get_template_directory_uri(); ?>/images/bg1.jpg">
+<section class="inner-header divider layer-overlay overlay-dark" data-bg-img="http://placehold.it/1920/1280">
   <div class="container pt-30 pb-30">
     <!-- Section Content -->
     <div class="section-content text-center">
@@ -97,17 +97,17 @@ if (!$status) $status = 'Open';
         </div>
       </div>
       <div class="col-md-8">
-        <div class="icon-box mb-0 p-0">
-          <a href="#" class="icon icon-gray pull-left mb-0 mr-10">
+        <div class="icon-box mb-0 p-0 text-left">
+          <a href="#" class="icon icon-gray pull-left mb-0 mr-10 hidden-xs">
             <?php if ( has_post_thumbnail() ) : ?>
               <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'thumbnail'); ?>" alt="<?php the_title(); ?>" style="width: 50px; height: 50px; object-fit: cover;">
             <?php else : ?>
               <i class="pe-7s-users"></i>
             <?php endif; ?>
           </a>
-          <h3 class="icon-box-title pt-15 mt-0 mb-40"><?php the_title(); ?></h3>
+          <h3 class="icon-box-title pt-15 mt-0 mb-40 text-left"><?php the_title(); ?></h3>
           <hr>
-          <div class="job-content">
+          <div class="job-content text-left">
             <?php the_content(); ?>
           </div>
           <?php if ($status == 'Open') : ?>
