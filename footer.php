@@ -35,7 +35,7 @@
 					<li><a href="/about">About</a></li>
 					<li><a href="/causes">Causes</a></li>
 					<li><a href="/contact">Contact</a></li>
-					<!-- <li><a href="#">Copyright Notice</a></li> -->
+					<li><a href="/careers">Careers</a></li>
 				</ul>
 				</div>
 			</div>

@@ -79,3 +79,4 @@ yarn-error.log*
 # Ignore any Mac-specific files
 .AppleDouble
 .LSOverride
+charityfund-client-html/

@@ -328,6 +328,44 @@ include get_template_directory() . '/cpts/causes-cpt.php';
 include get_template_directory() . '/cpts/slides-cpt.php';
 // Customize featured image text
 include get_template_directory() . '/inc/custom-featured-image-text.php';
+// Jobs CPT
+include get_template_directory() . '/cpts/jobs-cpt.php';
+// Job Form Handler
+include get_template_directory() . '/inc/job-form-handler.php';
+// Job Applications CPT
+include get_template_directory() . '/cpts/applications-cpt.php';
+
+/**
+ * Configure SMTP for Private Email
+ */
+function limadia_configure_smtp($phpmailer) {
+    if (defined('SMTP_HOST')) {
+        $phpmailer->isSMTP();
+        $phpmailer->Host       = SMTP_HOST;
+        $phpmailer->SMTPAuth   = SMTP_AUTH;
+        $phpmailer->Port       = (int) SMTP_PORT;
+        $phpmailer->Username   = SMTP_USER;
+        $phpmailer->Password   = SMTP_PASS;
+        $phpmailer->SMTPSecure = SMTP_SECURE;
+        $phpmailer->From       = SMTP_FROM;
+        $phpmailer->FromName   = SMTP_NAME;
+        
+        // Additional settings for stability
+        $phpmailer->Timeout    = 30;
+        $phpmailer->SMTPAutoTLS = false; 
+    }
+}
+add_action('phpmailer_init', 'limadia_configure_smtp');
 
 
 
+
+// Add Careers link to the primary menu
+function add_careers_link_to_menu($items, $args) {
+    if ($args->theme_location == 'primary_menu') {
+        $active_class = is_page_template('careers.php') ? 'active' : '';
+        $items .= '<li class="menu-item ' . esc_attr($active_class) . '"><a href="' . esc_url(home_url('/careers')) . '">Careers</a></li>';
+    }
+    return $items;
+}
+add_filter('wp_nav_menu_items', 'add_careers_link_to_menu', 10, 2);
