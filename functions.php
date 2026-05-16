@@ -363,7 +363,7 @@ add_action('phpmailer_init', 'limadia_configure_smtp');
 // Add Careers link to the primary menu
 function add_careers_link_to_menu($items, $args) {
     if ($args->theme_location == 'primary_menu') {
-        $active_class = is_page_template('careers.php') ? 'active' : '';
+        $active_class = (is_page_template('careers.php') || is_singular('job')) ? 'active' : '';
         $items .= '<li class="menu-item ' . esc_attr($active_class) . '"><a href="' . esc_url(home_url('/careers')) . '">Careers</a></li>';
     }
     return $items;
