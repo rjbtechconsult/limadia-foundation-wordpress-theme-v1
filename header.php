@@ -26,10 +26,6 @@
 	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 	})(window,document,'script','dataLayer','GTM-WL5BZMZS');</script>
 	<!-- End Google Tag Manager -->
-
-	<!-- Google AdSense -->
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8826698745914294" crossorigin="anonymous"></script>
-	<!-- End Google AdSense -->
 </head>
 
 <body <?php body_class('has-side-panel side-panel-right fullwidth-page side-push-panel'); ?>>
