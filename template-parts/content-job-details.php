@@ -98,14 +98,7 @@ if (!$status) $status = 'Open';
       </div>
       <div class="col-md-8">
         <div class="icon-box mb-0 p-0 text-left">
-          <a href="#" class="icon icon-gray pull-left mb-0 mr-10 hidden-xs">
-            <?php if ( has_post_thumbnail() ) : ?>
-              <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'thumbnail'); ?>" alt="<?php the_title(); ?>" style="width: 50px; height: 50px; object-fit: cover;">
-            <?php else : ?>
-              <i class="pe-7s-users"></i>
-            <?php endif; ?>
-          </a>
-          <h3 class="icon-box-title pt-15 mt-0 mb-40 text-left"><?php the_title(); ?></h3>
+          <h3 class="icon-box-title mt-0 mb-40 text-left"><?php the_title(); ?></h3>
           <hr>
           <div class="job-content text-left">
             <?php the_content(); ?>
