@@ -62,7 +62,7 @@
 					<script type="text/javascript">
 						$('#footer-mailchimp-subscription-form').ajaxChimp({
 							callback: mailChimpCallBack,
-							url: '//thememascot.us9.list-manage.com/subscribe/post?u=a01f440178e35febc8cf4e51f&amp;id=49d6d30e1e'
+							url: '//us7.list-manage.com/subscribe/post?u=e12c80c0a89f4c2ab78b6e347&id=6e10cae777'
 						});
 
 						function mailChimpCallBack(resp) {
