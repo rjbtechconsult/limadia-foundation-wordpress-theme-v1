@@ -3,6 +3,8 @@
     <div class="row pt-30">
         <div class="col-md-7">
         <h3 class="line-bottom mt-0 mb-30">Interested in discussing?</h3>
+        <!-- reCAPTCHA Script -->
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <!-- Contact Form -->
         <form id="contact_form" name="contact_form" class="" action="<?php echo admin_url('admin-ajax.php'); ?>" method="post">
             <input type="hidden" name="action" value="submit_contact_form">
@@ -41,6 +43,7 @@
             </div>
             <div class="form-group">
             <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="" />
+            <div class="g-recaptcha" data-sitekey="6Lei5vEsAAAAADz2L0PnHIIc2-870rfkosF1TrfF" style="margin-bottom: 20px;"></div>
             <button type="submit" class="btn btn-dark btn-theme-colored btn-flat mr-5" data-loading-text="Please wait...">Send your message</button>
             <button type="reset" class="btn btn-default btn-flat btn-theme-colored">Reset</button>
             </div>
@@ -60,6 +63,9 @@
                 success: function(data) {
                     if( data.status == 'true' ) {
                     $(form).find('.form-control').val('');
+                    if (typeof grecaptcha !== 'undefined') {
+                        grecaptcha.reset();
+                    }
                     $(form_result_div).removeClass('alert-danger').addClass('alert-success');
                     } else {
                     $(form_result_div).removeClass('alert-success').addClass('alert-danger');

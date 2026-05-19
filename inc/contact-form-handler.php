@@ -11,6 +11,33 @@ function handle_contact_form_submission() {
             die();
         }
 
+        // Verify reCAPTCHA
+        $recaptcha_response = isset($_POST['g-recaptcha-response']) ? sanitize_text_field($_POST['g-recaptcha-response']) : '';
+        if (empty($recaptcha_response)) {
+            echo json_encode(array('status' => 'false', 'message' => __('Please complete the reCAPTCHA verification (check the box to prove you are human).', 'limadia-entity-foundation-v1')));
+            die();
+        }
+
+        $recaptcha_secret = '6Lei5vEsAAAAAL87f1ERomJRwikJL9QMp3sGsxHo';
+        $verify_response = wp_remote_post('https://www.google.com/recaptcha/api/siteverify', array(
+            'body' => array(
+                'secret'   => $recaptcha_secret,
+                'response' => $recaptcha_response,
+                'remoteip' => $_SERVER['REMOTE_ADDR']
+            )
+        ));
+
+        if (is_wp_error($verify_response)) {
+            echo json_encode(array('status' => 'false', 'message' => __('Could not connect to reCAPTCHA service. Please try again later.', 'limadia-entity-foundation-v1')));
+            die();
+        }
+
+        $verify_data = json_decode(wp_remote_retrieve_body($verify_response));
+        if (!$verify_data->success) {
+            echo json_encode(array('status' => 'false', 'message' => __('reCAPTCHA verification failed. Please try again.', 'limadia-entity-foundation-v1')));
+            die();
+        }
+
         $name    = sanitize_text_field($_POST['form_name']);
         $email   = sanitize_email($_POST['form_email']);
         $subject = sanitize_text_field($_POST['form_subject']);
