@@ -112,7 +112,7 @@
         <div class="icon-box media mb-15"> <a class="media-left pull-left flip mr-15" href="#"> <i class="pe-7s-mail text-theme-colored"></i></a>
             <div class="media-body">
             <h5 class="mt-0">Email Address</h5>
-            <p><a href="mailto:info@limadiafoundation.com">info@limadiafoundation.com</a></p>
+            <p><a href="mailto:info@limadiafoundation.org">info@limadiafoundation.org</a></p>
             </div>
         </div>
         <!-- <div class="icon-box media mb-15"> <a class="media-left pull-left flip mr-20" href="#"> <i class="fa fa-skype text-theme-colored"></i></a>

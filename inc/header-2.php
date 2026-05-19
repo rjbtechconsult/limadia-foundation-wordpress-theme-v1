@@ -18,7 +18,7 @@
 						<ul class="list-inline pull-right sm-pull-none sm-text-center mt-5">
 							<li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-colored"></i> <a class="text-gray" href="#">+233-05512-13475</a> </li>
 							<li class="m-0 pl-10 pr-10"> <i class="fa fa-clock-o text-theme-colored"></i> Mon-Fri 24 Hours </li>
-							<li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-colored"></i> <a class="text-gray" href="mailto:info@limadiafoundation.com">info@limadiafoundation.com</a> </li>
+							<li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-colored"></i> <a class="text-gray" href="mailto:info@limadiafoundation.org">info@limadiafoundation.org</a> </li>
 							<li class="sm-display-block mt-sm-10 mb-sm-10">
 								<a class="btn btn-colored btn-flat btn-theme-colored ajaxload-popup" href="<?php echo get_template_directory_uri(); ?>/ajax-load/donation-form.html" >Donate Now</a>
 							</li>

@@ -24,7 +24,7 @@
         <ul>
           <li class="font-14 mb-5"> <i class="fa fa-phone text-theme-colored"></i> <a href="#" class="text-gray">+233-05512-13475</a> </li>
           <li class="font-14 mb-5"> <i class="fa fa-clock-o text-theme-colored"></i> Mon-Fri 24 Hours </li>
-          <li class="font-14 mb-5"> <i class="fa fa-envelope-o text-theme-colored"></i> <a href="mailto:info@limadiafoundation.com" class="text-gray">info@limadiafoundation.com</a> </li>
+          <li class="font-14 mb-5"> <i class="fa fa-envelope-o text-theme-colored"></i> <a href="mailto:info@limadiafoundation.org" class="text-gray">info@limadiafoundation.org</a> </li>
         </ul>      
       </div>
       <div class="widget">
