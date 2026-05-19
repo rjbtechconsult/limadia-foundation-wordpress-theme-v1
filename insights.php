@@ -9,8 +9,8 @@ get_header();
 ?>
 
 <!-- Section: inner-header -->
-<section class="inner-header divider layer-overlay overlay-dark" data-bg-img="<?php echo esc_url( get_template_directory_uri() . '/images/bg1.jpg' ); ?>">
-  <div class="container pt-35 pb-35">
+<section class="inner-header divider layer-overlay overlay-dark" data-bg-img="http://placehold.it/1920/1280">
+  <div class="container pt-30 pb-30">
     <!-- Section Content -->
     <div class="section-content text-center">
       <div class="row"> 
@@ -65,7 +65,7 @@ get_header();
                       <div class="media-body pl-15">
                         <div class="event-content pull-left flip">
                           <h4 class="entry-title text-uppercase m-0 mt-5"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-                          <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-user mr-5 text-theme-colored"></i> <?php the_author(); ?></span>
+                          <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-calendar-o mr-5 text-theme-colored"></i> <?php echo get_the_date(); ?></span>
                           <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-folder-o mr-5 text-theme-colored"></i> <?php the_category(', '); ?></span>
                         </div>
                       </div>

@@ -14,8 +14,8 @@ get_header();
     $featured_image = get_the_post_thumbnail_url(get_the_ID(), 'full');
 ?>
 
-<section class="inner-header divider layer-overlay overlay-dark" data-bg-img="<?php echo esc_url( get_template_directory_uri() . '/images/bg1.jpg' ); ?>">
-    <div class="container pt-35 pb-35">
+<section class="inner-header divider layer-overlay overlay-dark" data-bg-img="http://placehold.it/1920/1280">
+    <div class="container pt-30 pb-30">
         <div class="section-content text-center">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 text-center">
@@ -51,8 +51,7 @@ get_header();
                             <div class="entry-meta">
                                 <ul class="list-inline">
                                     <li>Posted: <span class="text-theme-colored"><?php echo get_the_date(); ?></span></li>
-                                    <li>By: <span class="text-theme-colored"><?php the_author(); ?></span></li>
-                                    <li>Categories: <span class="text-theme-colored"><?php the_category(', '); ?></span></li>
+                                    <li><i class="fa fa-folder-o text-theme-colored mr-5"></i><span class="text-theme-colored"><?php the_category(', '); ?></span></li>
                                 </ul>
                             </div>
                             <div class="entry-content mt-10">
@@ -60,28 +59,28 @@ get_header();
                             </div>
                         </article>
                         
+                        <?php
+                        $share_url   = urlencode( get_permalink() );
+                        $share_title = urlencode( get_the_title() );
+                        ?>
                         <div class="tagline p-0 pt-20 mt-5">
                             <div class="row">
-                                <div class="col-md-8">
-                                    <div class="tags">
-                                        <p class="mb-0"><i class="fa fa-tags text-theme-colored"></i> <span>Tags:</span> <?php the_tags('', ', ', ''); ?></p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
+                                <div class="col-md-12">
                                     <div class="share text-right">
-                                        <p><i class="fa fa-share-alt text-theme-colored"></i> Share</p>
+                                        <p class="mb-0 mr-10" style="display: inline-block;"><i class="fa fa-share-alt text-theme-colored"></i> Share:</p>
+                                        <ul class="styled-icons icon-sm icon-dark icon-theme-colored mt-0" style="display: inline-block; margin-bottom: 0; vertical-align: middle;">
+                                            <li><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $share_url; ?>" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href="https://twitter.com/intent/tweet?text=<?php echo $share_title; ?>&url=<?php echo $share_url; ?>" target="_blank"><i class="fa" style="font-family: sans-serif; font-style: normal; font-weight: bold;">X</i></a></li>
+                                            <li><a href="https://api.whatsapp.com/send?text=<?php echo $share_title; ?>%20<?php echo $share_url; ?>" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="author-details media-post">
-                            <a href="#" class="post-thumb mb-0 pull-left flip pr-20"><?php echo get_avatar( get_the_author_meta('ID'), 125, '', '', array('class' => 'img-thumbnail') ); ?></a>
-                            <div class="post-right">
-                                <h5 class="post-title mt-0 mb-0"><a href="#" class="font-18"><?php the_author(); ?></a></h5>
-                                <p><?php the_author_meta('description'); ?></p>
-                            </div>
-                            <div class="clearfix"></div>
+                        <div class="call-to-action border-1px bg-lighter mt-40 mb-30 p-30 pt-40 pb-40 text-center">
+                            <h3 class="mt-0">Help Us Make a Difference</h3>
+                            <p class="mb-20 text-gray-dimgray font-15">Your contribution helps us continue our mission of providing holistic development for children and healthcare for the elderly in Ghana.</p>
+                            <a class="btn btn-colored btn-theme-colored btn-flat ajaxload-popup" href="<?php echo get_template_directory_uri(); ?>/ajax-load/donation-form.html"><i class="fa fa-heart-o text-white mr-5"></i> Donate Today</a>
                         </div>
 
                         <?php
