@@ -72,6 +72,12 @@ function job_application_details_callback($post) {
     $cl_id     = get_post_meta($post->ID, '_applicant_cover_letter_id', true);
     
     $job_title = $job_id ? get_the_title($job_id) : 'Unknown Job';
+
+    // Normalize portfolio URL if it doesn't have a protocol, so it doesn't link relatively in the admin area
+    $portfolio_url = $portfolio;
+    if ($portfolio_url && !preg_match('/^(https?|ftp):\/\//i', $portfolio_url)) {
+        $portfolio_url = 'http://' . $portfolio_url;
+    }
     ?>
     <table class="form-table">
         <tr>
@@ -89,7 +95,7 @@ function job_application_details_callback($post) {
         <?php if ($portfolio) : ?>
         <tr>
             <th><strong><?php _e('Portfolio/Website:', 'limadia-entity-foundation-v1'); ?></strong></th>
-            <td><a href="<?php echo esc_url($portfolio); ?>" target="_blank"><?php echo esc_html($portfolio); ?></a></td>
+            <td><a href="<?php echo esc_url($portfolio_url); ?>" target="_blank"><?php echo esc_html($portfolio); ?></a></td>
         </tr>
         <?php endif; ?>
         <?php if ($cl_id) : ?>
@@ -228,13 +234,19 @@ function handle_job_application_csv_export() {
             $job_id_app = get_post_meta($app->ID, '_job_id', true);
             $cv_id      = get_post_meta($app->ID, '_applicant_cv_id', true);
             $cl_id      = get_post_meta($app->ID, '_applicant_cover_letter_id', true);
+            $portfolio  = get_post_meta($app->ID, '_applicant_portfolio', true);
+            
+            $portfolio_url = $portfolio;
+            if ($portfolio_url && !preg_match('/^(https?|ftp):\/\//i', $portfolio_url)) {
+                $portfolio_url = 'http://' . $portfolio_url;
+            }
             
             fputcsv($output, array(
                 $app->post_title,
                 get_the_title($job_id_app),
                 get_post_meta($app->ID, '_applicant_email', true),
                 get_post_meta($app->ID, '_applicant_phone', true),
-                get_post_meta($app->ID, '_applicant_portfolio', true),
+                $portfolio_url,
                 get_the_date('Y-m-d H:i:s', $app->ID),
                 $cv_id ? wp_get_attachment_url($cv_id) : 'N/A',
                 $cl_id ? wp_get_attachment_url($cl_id) : 'N/A'

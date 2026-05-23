@@ -12,7 +12,20 @@ function handle_job_application_submission() {
         $name      = sanitize_text_field($_POST['form_name']);
         $email     = sanitize_email($_POST['form_email']);
         $phone     = sanitize_text_field($_POST['form_phone']);
-        $portfolio = esc_url_raw($_POST['form_portfolio']);
+        
+        $portfolio_raw = isset($_POST['form_portfolio']) ? trim($_POST['form_portfolio']) : '';
+        $portfolio = '';
+        if ($portfolio_raw !== '') {
+            if (!preg_match('/^(https?|ftp):\/\//i', $portfolio_raw)) {
+                $portfolio = esc_url_raw('http://' . $portfolio_raw);
+            } else {
+                $portfolio = esc_url_raw($portfolio_raw);
+            }
+            if (!$portfolio) {
+                $portfolio = sanitize_text_field($portfolio_raw);
+            }
+        }
+
         $job_id    = intval($_POST['job_id']);
 
         if (empty($name) || empty($email) || empty($phone) || empty($job_id)) {
