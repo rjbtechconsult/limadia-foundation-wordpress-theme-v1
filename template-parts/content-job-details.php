@@ -166,6 +166,7 @@ if (!$status) $status = 'Open';
             <input name="form_attachment" class="file" type="file" required accept=".pdf,application/pdf" data-show-upload="false" data-show-caption="true">
             <small>Maximum upload file size: 5 MB</small>
           </div>
+          <div id="form_msg" class="alert" style="display: none; margin-top: 20px;"></div>
           <div class="form-group text-center">
             <button type="submit" class="btn btn-dark btn-theme-colored btn-lg btn-block mt-20" data-loading-text="Please wait...">Submit Application</button>
           </div>
@@ -190,6 +191,48 @@ if (!$status) $status = 'Open';
       var btn = form.find('button[type="submit"]');
       var originalBtnText = btn.text();
       
+      // Reset previous error messages
+      $('#form_msg').hide().removeClass('alert-success alert-danger').html('');
+      
+      // Client-side file validation (size & type)
+      var maxSizeBytes = 5 * 1024 * 1024; // 5 MB
+      var coverLetterInput = form.find('input[name="form_cover_letter"]')[0];
+      var cvInput = form.find('input[name="form_attachment"]')[0];
+      
+      function validateFile(input, labelName) {
+        if (input && input.files && input.files.length > 0) {
+          var file = input.files[0];
+          // Check size
+          if (file.size > maxSizeBytes) {
+            return labelName + ' exceeds the 5 MB limit. Please upload a smaller file.';
+          }
+          // Check extension / MIME type
+          var ext = file.name.split('.').pop().toLowerCase();
+          if (ext !== 'pdf' && file.type !== 'application/pdf') {
+            return labelName + ' must be a PDF file.';
+          }
+        }
+        return null;
+      }
+      
+      var coverLetterError = validateFile(coverLetterInput, 'Cover Letter');
+      if (coverLetterError) {
+        $('#form_msg').addClass('alert-danger').html(coverLetterError).show();
+        $('html, body').animate({
+            scrollTop: $('#form_msg').offset().top - 100
+        }, 500);
+        return false;
+      }
+      
+      var cvError = validateFile(cvInput, 'C/V');
+      if (cvError) {
+        $('#form_msg').addClass('alert-danger').html(cvError).show();
+        $('html, body').animate({
+            scrollTop: $('#form_msg').offset().top - 100
+        }, 500);
+        return false;
+      }
+      
       btn.prop('disabled', true).text('Sending...');
       
       var formData = new FormData(this);
@@ -201,20 +244,46 @@ if (!$status) $status = 'Open';
         contentType: false,
         processData: false,
         success: function(response) {
-          if (response.success) {
-            form.html('<div class="alert alert-success">' + response.data.message + '</div>');
+          // Robustly parse the response (WordPress admin-ajax.php can return raw '0' or HTML errors)
+          var resObj = response;
+          if (typeof response === 'string') {
+            try {
+              resObj = JSON.parse(response);
+            } catch(e) {
+              resObj = null;
+            }
+          }
+          
+          if (resObj && resObj.success) {
+            var msg = (resObj.data && resObj.data.message) ? resObj.data.message : 'Your application has been submitted successfully!';
+            form.html('<div class="alert alert-success">' + msg + '</div>');
             // Scroll to the success message
             $('html, body').animate({
                 scrollTop: form.offset().top - 100
             }, 500);
           } else {
-            alert(response.data.message);
+            var errorMsg = 'An unknown error occurred. Please try again.';
+            if (resObj && resObj.data && resObj.data.message) {
+              errorMsg = resObj.data.message;
+            } else if (typeof response === 'string' && response.trim() === '0') {
+              errorMsg = 'Security check failed or the request was invalid (returned 0).';
+            } else if (typeof response === 'string') {
+              errorMsg = response;
+            }
+            $('#form_msg').addClass('alert-danger').html(errorMsg).show();
+            $('html, body').animate({
+                scrollTop: $('#form_msg').offset().top - 100
+            }, 500);
             btn.prop('disabled', false).text(originalBtnText);
           }
         },
         error: function(xhr, status, error) {
           console.log('Server Response:', xhr.responseText);
-          alert('A server error occurred. Please check the console for details or contact support.');
+          var errorMsg = 'A server error occurred. Please check the console for details or contact support.';
+          $('#form_msg').addClass('alert-danger').html(errorMsg).show();
+          $('html, body').animate({
+              scrollTop: $('#form_msg').offset().top - 100
+          }, 500);
           btn.prop('disabled', false).text(originalBtnText);
         }
       });
