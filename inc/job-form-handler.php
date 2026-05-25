@@ -144,12 +144,33 @@ function handle_job_application_submission() {
         if ($file_path) $attachments[] = $file_path;
     }
 
-    // Attempt to send email
+    // Attempt to send email to admin
     $mail_sent = wp_mail($to, $subject, $body, $headers, $attachments);
+
+    // Send confirmation/acknowledgement email to the applicant
+    $applicant_to      = $email;
+    $applicant_subject = __('Application Received: ', 'limadia-entity-foundation-v1') . get_the_title($job_id);
+    
+    $applicant_headers = array(
+        'Content-Type: text/html; charset=UTF-8',
+        'From: Limadia Foundation <info@limadiafoundation.org>'
+    );
+    
+    $applicant_body = "<p>" . sprintf(__('Dear %s,', 'limadia-entity-foundation-v1'), $name) . "</p>";
+    $applicant_body .= "<p>" . sprintf(__('Thank you for submitting your application for the <strong>%s</strong> position at Limadia Foundation.', 'limadia-entity-foundation-v1'), get_the_title($job_id)) . "</p>";
+    $applicant_body .= "<p>" . __('We have successfully received your application, including your C/V and Cover Letter. Our hiring team will review your qualifications against the requirements for this role.', 'limadia-entity-foundation-v1') . "</p>";
+    $applicant_body .= "<p>" . __('If your background and skills align with what we are looking for, we will contact you directly to discuss the next steps in the selection process.', 'limadia-entity-foundation-v1') . "</p>";
+    $applicant_body .= "<p>" . __('We appreciate your interest in Limadia Foundation and the time you took to apply. We wish you the very best in your job search.', 'limadia-entity-foundation-v1') . "</p>";
+    $applicant_body .= "<br>";
+    $applicant_body .= "<p>" . __('Sincerely,', 'limadia-entity-foundation-v1') . "<br>";
+    $applicant_body .= "<strong>" . __('Limadia Foundation Hiring Team', 'limadia-entity-foundation-v1') . "</strong><br>";
+    $applicant_body .= "<a href='https://limadiafoundation.org'>limadiafoundation.org</a></p>";
+
+    wp_mail($applicant_to, $applicant_subject, $applicant_body, $applicant_headers);
 
     if (!$mail_sent) {
         $error_msg = isset($GLOBALS['wp_mail_error']) ? $GLOBALS['wp_mail_error'] : 'Mail server rejected the connection.';
-        wp_send_json_success(array('message' => __('Your application was submitted, but there was an error sending the email: ', 'limadia-entity-foundation-v1') . $error_msg));
+        wp_send_json_success(array('message' => __('Your application was submitted, but there was an error sending the notification email: ', 'limadia-entity-foundation-v1') . $error_msg));
     }
 
     wp_send_json_success(array('message' => __('Your application has been submitted successfully!', 'limadia-entity-foundation-v1')));
