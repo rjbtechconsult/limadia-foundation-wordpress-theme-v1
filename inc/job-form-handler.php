@@ -161,7 +161,16 @@ function handle_job_application_submission() {
     $applicant_body .= "<p>" . __('We have successfully received your application, including your C/V and Cover Letter. Our hiring team will review your qualifications against the requirements for this role.', 'limadia-entity-foundation-v1') . "</p>";
     $applicant_body .= "<p>" . __('If your background and skills align with what we are looking for, we will contact you directly to discuss the next steps in the selection process.', 'limadia-entity-foundation-v1') . "</p>";
     $applicant_body .= "<p>" . __('We appreciate your interest in Limadia Foundation and the time you took to apply. We wish you the very best in your job search.', 'limadia-entity-foundation-v1') . "</p>";
-    $logo_url = esc_url(get_template_directory_uri() . '/images/logo-wide@4x.png');
+    $logo_url = get_template_directory_uri() . '/images/logo-wide@4x.png';
+    // If testing on localhost/local environment, rewrite to use the public production domain 
+    // so the email client can fetch the image successfully.
+    if (strpos($logo_url, '.local') !== false || strpos($logo_url, 'localhost') !== false || strpos($logo_url, '127.0.0.1') !== false) {
+        $wp_content_pos = strpos($logo_url, '/wp-content/');
+        if ($wp_content_pos !== false) {
+            $logo_url = 'https://limadiafoundation.org' . substr($logo_url, $wp_content_pos);
+        }
+    }
+    $logo_url = esc_url($logo_url);
     $applicant_body .= "<br>";
     $applicant_body .= "<p>" . __('Sincerely,', 'limadia-entity-foundation-v1') . "<br>";
     $applicant_body .= "<strong>" . __('Limadia Foundation Hiring Team', 'limadia-entity-foundation-v1') . "</strong><br>";
