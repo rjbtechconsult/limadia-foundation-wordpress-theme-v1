@@ -161,10 +161,12 @@ function handle_job_application_submission() {
     $applicant_body .= "<p>" . __('We have successfully received your application, including your C/V and Cover Letter. Our hiring team will review your qualifications against the requirements for this role.', 'limadia-entity-foundation-v1') . "</p>";
     $applicant_body .= "<p>" . __('If your background and skills align with what we are looking for, we will contact you directly to discuss the next steps in the selection process.', 'limadia-entity-foundation-v1') . "</p>";
     $applicant_body .= "<p>" . __('We appreciate your interest in Limadia Foundation and the time you took to apply. We wish you the very best in your job search.', 'limadia-entity-foundation-v1') . "</p>";
+    $logo_url = esc_url(get_template_directory_uri() . '/images/logo-wide@4x.png');
     $applicant_body .= "<br>";
     $applicant_body .= "<p>" . __('Sincerely,', 'limadia-entity-foundation-v1') . "<br>";
     $applicant_body .= "<strong>" . __('Limadia Foundation Hiring Team', 'limadia-entity-foundation-v1') . "</strong><br>";
     $applicant_body .= "<a href='https://limadiafoundation.org'>limadiafoundation.org</a></p>";
+    $applicant_body .= "<p><img src='{$logo_url}' alt='" . esc_attr__('Limadia Foundation', 'limadia-entity-foundation-v1') . "' style='width: 180px; height: auto; max-width: 100%;'></p>";
 
     wp_mail($applicant_to, $applicant_subject, $applicant_body, $applicant_headers);
 
