@@ -45,7 +45,7 @@
 				<div class="widget dark">
 					<h5 class="widget-title line-bottom">Quick Contact</h5>
 					<ul class="list-border">
-						<li><a href="tel:+2330551213475">+233-05512-13475</a></li>
+						<li><a href="tel:+2330595803700">+233-05958-03700</a></li>
 						<li><a href="mailto:info@limadiafoundation.org">info@limadiafoundation.org</a></li>
 						<li><a href="#" class="lineheight-20">Plot number 37, Achiase Nwansamire, Near Zion Primary Sch, Nkawie, Atwima- Nwabiagya, Kumasi, Ghana.</a></li>
 					</ul>

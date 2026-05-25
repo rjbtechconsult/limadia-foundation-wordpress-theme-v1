@@ -106,7 +106,7 @@
         <div class="icon-box media mb-15"> <a class="media-left pull-left flip mr-15" href="#"> <i class="pe-7s-call text-theme-colored"></i></a>
             <div class="media-body">
             <h5 class="mt-0">Contact Number</h5>
-            <p><a href="tel:+2330551213475">+233-05512-13475</a></p>
+            <p><a href="tel:+2330595803700">+233-05958-03700</a></p>
             </div>
         </div>
         <div class="icon-box media mb-15"> <a class="media-left pull-left flip mr-15" href="#"> <i class="pe-7s-mail text-theme-colored"></i></a>

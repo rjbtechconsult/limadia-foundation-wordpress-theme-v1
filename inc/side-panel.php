@@ -22,7 +22,7 @@
     <div class="side-panel-widget mt-30">
       <div class="widget no-border">
         <ul>
-          <li class="font-14 mb-5"> <i class="fa fa-phone text-theme-colored"></i> <a href="#" class="text-gray">+233-05512-13475</a> </li>
+          <li class="font-14 mb-5"> <i class="fa fa-phone text-theme-colored"></i> <a href="tel:+2330595803700" class="text-gray">+233-05958-03700</a> </li>
           <li class="font-14 mb-5"> <i class="fa fa-clock-o text-theme-colored"></i> Mon-Fri 24 Hours </li>
           <li class="font-14 mb-5"> <i class="fa fa-envelope-o text-theme-colored"></i> <a href="mailto:info@limadiafoundation.org" class="text-gray">info@limadiafoundation.org</a> </li>
         </ul>      
