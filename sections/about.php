@@ -5,8 +5,8 @@
             <div class="col-md-12 text-center">
                 <!-- <h4 class="m-0">Welcome to</h4> -->
                 <h2 class="title text-theme-colored mt-0">What We Do</h2>
-                    Our mission is the holistic development of children in Ghana and the provision of healthcare to elderly people with dementia. 
-                    Limadia Entity Foundation aims to strengthen Ghanaian communities by investing in people and creating meaningful, lasting contributions to society.
+                    Our mission is the holistic development of children in Ghana, the provision of healthcare to elderly people with dementia, and fighting against corruption, bribery, and infrastructure injustice. 
+                    Limadia Entity Foundation aims to strengthen Ghanaian communities by investing in people, advocating for justice, and creating meaningful, lasting contributions to society.
 
                 <!-- <h4 class="mt-20 mb-5">Our Services</h4>
                 <ul class="list theme-colored angle-double-right mb-sm-30">

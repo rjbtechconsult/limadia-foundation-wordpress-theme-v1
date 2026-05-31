@@ -79,7 +79,7 @@ get_header();
                         </div>
                         <div class="call-to-action border-1px bg-lighter mt-40 mb-30 p-30 pt-40 pb-40 text-center">
                             <h3 class="mt-0">Help Us Make a Difference</h3>
-                            <p class="mb-20 text-gray-dimgray font-15">Your contribution helps us continue our mission of providing holistic development for children and healthcare for the elderly in Ghana.</p>
+                            <p class="mb-20 text-gray-dimgray font-15">Your contribution helps us continue our mission of child development, elder care, and advocating against infrastructure injustice and corruption in Ghana.</p>
                             <a class="btn btn-colored btn-theme-colored btn-flat ajaxload-popup" href="<?php echo get_template_directory_uri(); ?>/ajax-load/donation-form.html"><i class="fa fa-heart-o text-white mr-5"></i> Donate Today</a>
                         </div>
 
