@@ -28,11 +28,11 @@
                                         data-hoffset="['50','50','30','17']" 
                                         data-y="['bottom','bottom','bottom','bottom']" 
                                         data-voffset="['110','110','180','160']" 
-                                        data-fontsize="['105','100','70','60']"
-                                        data-lineheight="['100','90','60','60']"
-                                        data-width="['none','none','none','400']"
+                                        data-fontsize="['54','48','36','28']"
+                                        data-lineheight="['60','54','42','34']"
+                                        data-width="['1000','900','700','400']"
                                         data-height="none"
-                                        data-whitespace="['nowrap','nowrap','nowrap','normal']"
+                                        data-whitespace="['normal','normal','normal','normal']"
                                         data-transform_idle="o:1;"
                                         data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeInOut;" 
                                         data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
@@ -43,7 +43,7 @@
                                         data-splitout="none" 
                                         data-basealign="slide" 
                                         data-responsive_offset="on"
-                                        style="z-index: 6; white-space: nowrap;"><span class="text-theme-colored"><?php the_title(); ?></span>
+                                        style="z-index: 6; white-space: normal;"><span class="text-theme-colored"><?php the_title(); ?></span>
                                     </div>
 
                                     <!-- LAYER NR. 2 -->
