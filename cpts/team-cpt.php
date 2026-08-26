@@ -91,13 +91,22 @@ function team_member_details_meta_box_callback($post) {
     $facebook  = get_post_meta($post->ID, '_member_facebook', true);
     $instagram = get_post_meta($post->ID, '_member_instagram', true);
     ?>
-    <div style="display: flex; flex-direction: column; gap: 15px; padding: 10px 0;">
-        <p style="margin: 0;">
-            <label for="member_role" style="display: block; font-weight: 600; margin-bottom: 5px;">
-                <?php _e('Job Title / Designation / Role:', 'limadia-entity-foundation-v1'); ?> <span style="color:red;">*</span>
-            </label>
-            <input type="text" id="member_role" name="member_role" value="<?php echo esc_attr($role); ?>" class="widefat" placeholder="e.g. Executive Director, Head of Health, Programs Lead" style="height: 36px;" />
-        </p>
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px;">
+            <p style="margin: 0;">
+                <label for="member_role" style="display: block; font-weight: 600; margin-bottom: 5px;">
+                    <?php _e('Job Title / Designation / Role:', 'limadia-entity-foundation-v1'); ?> <span style="color:red;">*</span>
+                </label>
+                <input type="text" id="member_role" name="member_role" value="<?php echo esc_attr($role); ?>" class="widefat" placeholder="e.g. Executive Director, Head of Health, Programs Lead" style="height: 36px;" />
+            </p>
+
+            <p style="margin: 0;">
+                <label for="menu_order_field" style="display: block; font-weight: 600; margin-bottom: 5px;">
+                    <span class="dashicons dashicons-sort" style="vertical-align: middle; color: #e06000;"></span> <?php _e('Display Order / Priority:', 'limadia-entity-foundation-v1'); ?>
+                </label>
+                <input type="number" id="menu_order_field" name="menu_order_field" value="<?php echo esc_attr($post->menu_order); ?>" class="widefat" min="0" step="1" placeholder="1" style="height: 36px;" />
+                <span class="description" style="color: #666; font-size: 12px;"><?php _e('Lower number = higher priority (1 for CEO, 2, 3, etc.)', 'limadia-entity-foundation-v1'); ?></span>
+            </p>
+        </div>
 
         <p style="margin: 0;">
             <label for="member_bio" style="display: block; font-weight: 600; margin-bottom: 5px;">
@@ -176,6 +185,20 @@ function save_team_member_details_meta($post_id) {
         return;
     }
 
+    // Save menu_order directly
+    if (isset($_POST['menu_order_field'])) {
+        $order = intval($_POST['menu_order_field']);
+        global $wpdb;
+        $wpdb->update(
+            $wpdb->posts,
+            array('menu_order' => $order),
+            array('ID' => $post_id),
+            array('%d'),
+            array('%d')
+        );
+        clean_post_cache($post_id);
+    }
+
     $fields = array(
         'member_role'      => 'sanitize_text_field',
         'member_bio'       => 'sanitize_textarea_field',
@@ -208,8 +231,8 @@ function set_team_member_columns($columns) {
     $custom_columns['thumbnail']   = __('Photo', 'limadia-entity-foundation-v1');
     $custom_columns['title']       = __('Name', 'limadia-entity-foundation-v1');
     $custom_columns['member_role'] = __('Role / Designation', 'limadia-entity-foundation-v1');
+    $custom_columns['order']       = __('Order / Position', 'limadia-entity-foundation-v1');
     $custom_columns['email']       = __('Email', 'limadia-entity-foundation-v1');
-    $custom_columns['order']       = __('Order', 'limadia-entity-foundation-v1');
     $custom_columns['date']        = $columns['date'];
     return $custom_columns;
 }
@@ -234,7 +257,7 @@ function render_team_member_custom_column($column, $post_id) {
             break;
         case 'order':
             $post = get_post($post_id);
-            echo esc_html($post->menu_order);
+            echo '<span style="display: inline-block; background: #f0f0f1; border: 1px solid #c3c4c7; color: #1d2327; padding: 2px 9px; border-radius: 4px; font-weight: 700; font-size: 12px;">#' . esc_html($post->menu_order) . '</span>';
             break;
     }
 }
@@ -249,6 +272,20 @@ function set_team_member_sortable_columns($columns) {
     return $columns;
 }
 add_filter('manage_edit-team_member_sortable_columns', 'set_team_member_sortable_columns');
+
+/**
+ * Default Admin List Table to Sort by menu_order
+ */
+function set_team_member_admin_default_order($query) {
+    if (!is_admin() || !$query->is_main_query()) {
+        return;
+    }
+    if ($query->get('post_type') === 'team_member' && !isset($_GET['orderby'])) {
+        $query->set('orderby', array('menu_order' => 'ASC', 'date' => 'ASC'));
+        $query->set('order', 'ASC');
+    }
+}
+add_action('pre_get_posts', 'set_team_member_admin_default_order');
 
 /**
  * Add Duplicate Row Action for Team Members

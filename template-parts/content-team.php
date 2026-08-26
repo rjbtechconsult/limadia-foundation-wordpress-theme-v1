@@ -152,21 +152,22 @@ if ( empty( $team_members ) ) {
 }
 ?>
 
-<!-- Section: Inner Header -->
-<section class="inner-header divider layer-overlay overlay-dark" data-bg-img="<?php echo esc_url( get_template_directory_uri() . '/images/bg2.jpg' ); ?>">
-	<div class="container pt-40 pb-40">
-		<div class="section-content text-center">
-			<div class="row"> 
-				<div class="col-md-8 col-md-offset-2 text-center">
-					<h2 class="text-theme-colored font-36 font-weight-700 text-uppercase mb-5">Our Team</h2>
-					<ol class="breadcrumb text-center mt-10 white">
-						<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a></li>
-						<li class="active">Team</li>
-					</ol>
-				</div>
-			</div>
-		</div>
-	</div>      
+<!-- Section: inner-header -->
+<section class="inner-header divider layer-overlay overlay-dark" data-bg-img="http://placehold.it/1920/1280">
+  <div class="container pt-30 pb-30">
+    <!-- Section Content -->
+    <div class="section-content text-center">
+      <div class="row"> 
+        <div class="col-md-6 col-md-offset-3 text-center">
+          <h2 class="text-theme-colored font-36">Team</h2>
+          <ol class="breadcrumb text-center mt-10 white">
+            <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a></li>
+            <li class="active">Team</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>      
 </section>
 
 <!-- Section: Team Introduction -->
@@ -188,49 +189,48 @@ if ( empty( $team_members ) ) {
 
 		<!-- Team Members Grid -->
 		<div class="section-content">
-			<div class="row multi-row-clearfix">
+			<div class="row multi-row-clearfix team-grid-row">
 				<?php foreach ( $team_members as $member ) : ?>
-					<div class="col-xs-12 col-sm-6 col-md-3 mb-40">
-						<div class="team-member-card bg-white border-1px p-15" style="border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); height: 100%; display: flex; flex-direction: column;">
-							<div class="thumb position-relative" style="overflow: hidden; border-radius: 4px;">
+					<div class="col-xs-12 col-sm-6 col-md-3 mb-40 team-col">
+						<div class="team-member-card">
+							<div class="thumb">
 								<img 
 									src="<?php echo esc_url( $member['image'] ); ?>" 
 									alt="<?php echo esc_attr( $member['name'] ); ?>" 
 									class="img-fullwidth img-responsive"
-									style="width: 100%; height: 260px; object-fit: cover; object-position: top center; transition: transform 0.4s ease;"
-									onmouseover="this.style.transform='scale(1.05)'"
-									onmouseout="this.style.transform='scale(1)'"
 								>
 							</div>
-							<div class="info pt-20 pb-10 text-center" style="display: flex; flex-direction: column; flex-grow: 1;">
-								<h4 class="name font-18 font-weight-700 mt-0 mb-5">
+							<div class="info">
+								<h4 class="name">
 									<span class="text-dark"><?php echo esc_html( $member['name'] ); ?></span>
 								</h4>
-								<h6 class="occupation font-12 text-theme-colored font-weight-600 text-uppercase mt-0 mb-15" style="letter-spacing: 0.5px;">
+								<h6 class="occupation text-theme-colored">
 									<?php echo esc_html( $member['role'] ); ?>
 								</h6>
-								<p class="bio font-13 text-gray lineheight-20 mb-20 text-left" style="flex-grow: 1;">
+								<p class="bio">
 									<?php echo esc_html( $member['bio'] ); ?>
 								</p>
-								<div class="card-footer-social border-top-1px pt-15 mt-auto">
-									<ul class="styled-icons icon-sm icon-dark icon-theme-colored icon-circled m-0">
-										<?php if ( ! empty( $member['social']['linkedin'] ) ) : ?>
-											<li><a href="<?php echo esc_url( $member['social']['linkedin'] ); ?>" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-										<?php endif; ?>
-										<?php if ( ! empty( $member['social']['twitter'] ) ) : ?>
-											<li><a href="<?php echo esc_url( $member['social']['twitter'] ); ?>" target="_blank" rel="noopener noreferrer" title="Twitter / X"><i class="fa fa-twitter"></i></a></li>
-										<?php endif; ?>
-										<?php if ( ! empty( $member['social']['facebook'] ) ) : ?>
-											<li><a href="<?php echo esc_url( $member['social']['facebook'] ); ?>" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-										<?php endif; ?>
-										<?php if ( ! empty( $member['social']['instagram'] ) ) : ?>
-											<li><a href="<?php echo esc_url( $member['social']['instagram'] ); ?>" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-										<?php endif; ?>
-										<?php if ( ! empty( $member['social']['envelope'] ) ) : ?>
-											<li><a href="<?php echo esc_url( $member['social']['envelope'] ); ?>" title="Email"><i class="fa fa-envelope"></i></a></li>
-										<?php endif; ?>
-									</ul>
-								</div>
+								<?php if ( ! empty( $member['social'] ) ) : ?>
+									<div class="card-footer-social">
+										<ul class="styled-icons icon-sm icon-dark icon-theme-colored icon-circled m-0">
+											<?php if ( ! empty( $member['social']['linkedin'] ) ) : ?>
+												<li><a href="<?php echo esc_url( $member['social']['linkedin'] ); ?>" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
+											<?php endif; ?>
+											<?php if ( ! empty( $member['social']['twitter'] ) ) : ?>
+												<li><a href="<?php echo esc_url( $member['social']['twitter'] ); ?>" target="_blank" rel="noopener noreferrer" title="Twitter / X"><i class="fa fa-twitter"></i></a></li>
+											<?php endif; ?>
+											<?php if ( ! empty( $member['social']['facebook'] ) ) : ?>
+												<li><a href="<?php echo esc_url( $member['social']['facebook'] ); ?>" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+											<?php endif; ?>
+											<?php if ( ! empty( $member['social']['instagram'] ) ) : ?>
+												<li><a href="<?php echo esc_url( $member['social']['instagram'] ); ?>" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+											<?php endif; ?>
+											<?php if ( ! empty( $member['social']['envelope'] ) ) : ?>
+												<li><a href="<?php echo esc_url( $member['social']['envelope'] ); ?>" title="Email"><i class="fa fa-envelope"></i></a></li>
+											<?php endif; ?>
+										</ul>
+									</div>
+								<?php endif; ?>
 							</div>
 						</div>
 					</div>
@@ -252,41 +252,41 @@ if ( empty( $team_members ) ) {
 			</div>
 		</div>
 		<div class="section-content">
-			<div class="row">
-				<div class="col-xs-12 col-sm-6 col-md-3 mb-30">
-					<div class="icon-box iconbox-theme-colored text-center p-20 border-1px bg-lightest" style="border-radius: 6px; min-height: 220px;">
+			<div class="row team-grid-row">
+				<div class="col-xs-12 col-sm-6 col-md-3 mb-30 team-col">
+					<div class="icon-box iconbox-theme-colored text-center p-20 border-1px bg-lightest" style="border-radius: 6px; height: 100%; display: flex; flex-direction: column;">
 						<a class="icon icon-bordered icon-circled icon-md mb-15">
 							<i class="fa fa-heart font-28 text-theme-colored"></i>
 						</a>
 						<h4 class="icon-box-title font-16 font-weight-700 mt-0">Compassion & Dignity</h4>
-						<p class="font-13 text-gray m-0">Serving vulnerable children and the elderly with utmost empathy, care, and respect.</p>
+						<p class="font-13 text-gray m-0" style="flex: 1 1 auto;">Serving vulnerable children and the elderly with utmost empathy, care, and respect.</p>
 					</div>
 				</div>
-				<div class="col-xs-12 col-sm-6 col-md-3 mb-30">
-					<div class="icon-box iconbox-theme-colored text-center p-20 border-1px bg-lightest" style="border-radius: 6px; min-height: 220px;">
+				<div class="col-xs-12 col-sm-6 col-md-3 mb-30 team-col">
+					<div class="icon-box iconbox-theme-colored text-center p-20 border-1px bg-lightest" style="border-radius: 6px; height: 100%; display: flex; flex-direction: column;">
 						<a class="icon icon-bordered icon-circled icon-md mb-15">
 							<i class="fa fa-shield font-28 text-theme-colored"></i>
 						</a>
 						<h4 class="icon-box-title font-16 font-weight-700 mt-0">Integrity & Accountability</h4>
-						<p class="font-13 text-gray m-0">Maintaining unwavering transparency with donor funds, project milestones, and governance.</p>
+						<p class="font-13 text-gray m-0" style="flex: 1 1 auto;">Maintaining unwavering transparency with donor funds, project milestones, and governance.</p>
 					</div>
 				</div>
-				<div class="col-xs-12 col-sm-6 col-md-3 mb-30">
-					<div class="icon-box iconbox-theme-colored text-center p-20 border-1px bg-lightest" style="border-radius: 6px; min-height: 220px;">
+				<div class="col-xs-12 col-sm-6 col-md-3 mb-30 team-col">
+					<div class="icon-box iconbox-theme-colored text-center p-20 border-1px bg-lightest" style="border-radius: 6px; height: 100%; display: flex; flex-direction: column;">
 						<a class="icon icon-bordered icon-circled icon-md mb-15">
 							<i class="fa fa-users font-28 text-theme-colored"></i>
 						</a>
 						<h4 class="icon-box-title font-16 font-weight-700 mt-0">Community First</h4>
-						<p class="font-13 text-gray m-0">Listening directly to local community members to design solutions tailored to real needs.</p>
+						<p class="font-13 text-gray m-0" style="flex: 1 1 auto;">Listening directly to local community members to design solutions tailored to real needs.</p>
 					</div>
 				</div>
-				<div class="col-xs-12 col-sm-6 col-md-3 mb-30">
-					<div class="icon-box iconbox-theme-colored text-center p-20 border-1px bg-lightest" style="border-radius: 6px; min-height: 220px;">
+				<div class="col-xs-12 col-sm-6 col-md-3 mb-30 team-col">
+					<div class="icon-box iconbox-theme-colored text-center p-20 border-1px bg-lightest" style="border-radius: 6px; height: 100%; display: flex; flex-direction: column;">
 						<a class="icon icon-bordered icon-circled icon-md mb-15">
 							<i class="fa fa-leaf font-28 text-theme-colored"></i>
 						</a>
 						<h4 class="icon-box-title font-16 font-weight-700 mt-0">Sustainable Impact</h4>
-						<p class="font-13 text-gray m-0">Creating lasting systems, healthcare routines, and educational foundations that endure.</p>
+						<p class="font-13 text-gray m-0" style="flex: 1 1 auto;">Creating lasting systems, healthcare routines, and educational foundations that endure.</p>
 					</div>
 				</div>
 			</div>
