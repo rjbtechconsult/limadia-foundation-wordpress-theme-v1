@@ -344,6 +344,8 @@ include get_template_directory() . '/inc/contact-form-handler.php';
 include get_template_directory() . '/cpts/donations-cpt.php';
 // Donation Form Handler
 include get_template_directory() . '/inc/donation-form-handler.php';
+// Team Members CPT
+include get_template_directory() . '/cpts/team-cpt.php';
 
 /**
  * Configure SMTP for Private Email
